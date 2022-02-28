@@ -1,1 +1,1 @@
-# Bellabeat-Case-Study
+# FitBit Smart Device Analysis
