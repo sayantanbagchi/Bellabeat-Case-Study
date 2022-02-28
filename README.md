@@ -115,8 +115,10 @@ average_intensity float,
 step_total numeric (18,0)
 );
 --Insert corresponsing data and merge multiple table into one table
-Insert Into hourly_data_merge(id, date_new, time_new, calories, total_intensity, average_intensity, step_total)
-(SELECT temp1.Id, temp1.date_new, temp1.time_new, temp1.Calories, temp2.TotalIntensity, temp2.AverageIntensity, temp3.StepTotal
+Insert Into hourly_data_merge(
+id, date_new, time_new, calories, total_intensity, average_intensity, step_total)
+(SELECT 
+temp1.Id, temp1.date_new, temp1.time_new, temp1.Calories, temp2.TotalIntensity, temp2.AverageIntensity, temp3.StepTotal
 From hourly_calories AS temp1
 Inner Join hourly_intensities AS temp2
 ON temp1.Id = temp2.Id and temp1.date_new = temp2.date_new and temp1.time_new = temp2.time_new 
