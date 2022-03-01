@@ -239,6 +239,18 @@ Higher duration of sleep is associated with higher amount of calories burned. An
 
 #### METs and Average Calories Burned:
 
+**What is METs?**
+The metabolic equivalent of task (MET) is the objective measure of the ratio of the rate at which a person expends energy, relative to the mass of that person, while performing some specific physical activity compared to a reference, set by convention at 3.5 mL of oxygen per kilogram per minute, which is roughly equivalent to the energy expended when sitting quietly.
+MET: The ratio of the work metabolic rate to the resting metabolic rate. One MET is defined as 1 kcal/kg/hour and is roughly equivalent to the energy cost of sitting quietly. A MET also is defined as oxygen uptake in ml/kg/min with one MET equal to the oxygen cost of sitting quietly, equivalent to 3.5 ml/kg/min. The MET concept was primarily designed to be used in epidemiological surveys, where survey respondents answer the amount of time they spend for specific physical activities. MET is used to provide general medical thresholds and guidelines to a population. A MET is the ratio of the rate of energy expended during an activity to the rate of energy expended at rest. For example, 1 MET is the rate of energy expenditure while at rest. A 4 MET activity expends 4 times the energy used by the body at rest. If a person does a 4 MET activity for 30 minutes, he or she has done 4 x 30 = 120 MET-minutes (or 2.0 MET-hours) of physical activity. A person could also achieve 120 MET-minutes by doing an 8 MET activity for 15 minutes.
+
+To calculate the amount of calories burned per minute, we can use the formula:
+
+Calories burned per minute = (METs x 3.5 x (your body weight in Kg)) / 200
+
+![image](https://user-images.githubusercontent.com/96917306/156231398-7ef138ae-f2d5-4d9e-badc-3144dbd50571.png)
+
+*[source](https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task)
+
 ```SQL
 --average met per day per user, and compare with the calories burned
 Select Distinct temp1.Id, temp1.date_new, sum(temp1.METs) as sum_mets, temp2.Calories
@@ -251,8 +263,14 @@ OFFSET 0 ROWS FETCH FIRST 10 ROWS ONLY
 ```
 
 ![image](https://user-images.githubusercontent.com/96917306/156221688-ec812e40-ea5c-4f08-afa7-8881199a27c7.png)
+
 *there is total 934 rows, for better understanding I am attaching only first 10 rows*
 
 ![image](https://github.com/sayantanbagchi/Bellabeat-Case-Study/blob/b6728ca48f518eb15cacb820f02b3abd74cf6605/Visualizations/mets_calories.png)
 
+Key Findings:
 
+* The R-Squared value is 0.5504
+* Strong positive corellation between METs and average calories burned.
+
+The amount of calories burned for every user is highly dependent on their MET values they spend every day. This can be seen by the high r-squared value suggesting that the trend line has strong relation with the data points.
