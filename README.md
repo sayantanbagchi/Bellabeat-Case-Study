@@ -24,6 +24,7 @@ In order to solve this business task, only 6 of the given 18 datasets were used.
 
 ## Process 
 Clean and format data to be more meaningful and clearer. In this step I have organized data by adding columns, extracting information and removing bad data and duplicates.
+For the sake of simplicity, I have centralized all of the data into a Relational Database that is connected using MSSQL. This allowed me to easily manage the entirety of the files and make relevant queries, as the CSV files can be transformed into tables which I have linked by joining common attributes. Note that the server for the mentioned Database is *localhost*.
 ```SQL
 -- Checking Number of Rows on daily_activity
 SELECT COUNT (*)
@@ -56,7 +57,7 @@ Alter Table daily_activity
 ADD total_minutes_sleep int,
 total_time_in_bed int;
 
---Add sleep records into dailyActivity
+--Add sleep records into daily_activity
 UPDATE daily_activity
 Set total_minutes_sleep = temp2.TotalMinutesAsleep,
 total_time_in_bed = temp2.TotalTimeInBed 
@@ -137,3 +138,7 @@ FROM (SELECT id, time_new, calories, total_intensity, average_intensity, step_to
 	  GROUP BY id, time_new, calories, total_intensity, average_intensity, step_total
 	  HAVING Count(*) > 1) AS temp;
 ```
+* Number of unique users represented by the “Id” column. There were 24 unique users who provided data for their 'daily_sleep' health metrics, 8 unique users for their 'weight_loginfo' health metrics and 33 unique users for the rest. Based on this very low sample size of 'weight_loginfo' data providers, I have made the decision to drop this data frame along with 'daily_sleep' data as part of my analysis since this won’t add much insight. I have used 'daily_activity', 'hourly_calories', 'hourly_intensities', 'hourly_steps', 'sleep_day', and 'minute_METs_narrow' data tables for my analysis, all these tables have 33 unique users input.
+
+## Analyze
+Transform the data to identify patterns and draw conclusions. As determined by the Process step, I have a variety of data tables that measures different fitness parameters (steps, calories, distance, sleep, activity, etc) in both daily and hourly time frames. However, for organizational consistency as well as ease and simplicity, I will perform analysis on the data tables by whether observations are provided at a daily or hourly intervals. This is made possible because the “Id” column is a shared key that corresponds between each of the data tables.
