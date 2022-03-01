@@ -196,3 +196,56 @@ Group By Id
 
 * Strong correlation between activity intense time and calories burned
 * From the graph above, we can see that the most desired time people are active throughout the day is between 7:00 AM - 8:00PM
+#### Key Findings:
+
+* The R-Squared value for Low Active graph is 0.0118
+* The R-Squared value for Fairly Active graph is 0.0391
+* The R-Squared value for Very Active graph is 0.3865
+
+There is a strong correlation between Very Active minutes and the amount of calories burned. The r-squared value seems to rise as the intensity and the duration is the activity increases. Thus by inferring to the r-squared values of the respective trend lines of the graphs, we can conclude that the higher the intensity and the duration of the activity, the more calories is burned.
+
+### Sleep and Calories Comparison
+
+```SQL
+--Average Sleep Time per user
+SELECT Id, Avg(TotalMinutesAsleep)/60 as avg_sleep_time_hour,
+Avg(TotalTimeInBed)/60 as avg_time_bed_hour,
+AVG(TotalTimeInBed - TotalMinutesAsleep) as wasted_bed_time_min
+FROM sleep_day
+Group by Id
+```
+![image](https://user-images.githubusercontent.com/96917306/156220169-f18ab54d-b5d3-4f30-a67d-82a54c594bbf.png)
+
+```SQL
+--Sleep and calories comparison	
+Select temp1.Id, SUM(TotalMinutesAsleep) as total_sleep_min,
+SUM(TotalTimeInBed) as total_time_inbed_min,
+SUM(Calories) as calories
+From daily_activity as temp1
+Inner Join sleep_day as temp2
+ON temp1.Id = temp2.Id and temp1.ActivityDate = temp2.SleepDay
+Group By temp1.Id
+```
+![image](https://user-images.githubusercontent.com/96917306/156220333-c98a4ef4-debf-4442-83cc-5a8dab489cea.png)
+
+![image](https://github.com/sayantanbagchi/Bellabeat-Case-Study/blob/4d66e74e147d47a0258b7319ee998c9d53865e5d/Visualizations/sleep_calories.png)
+
+#### Key Findings:
+
+* The R-Squared value is 0.8727
+* Strong positive corellation between amount of sleep and calories burned.
+
+Higher duration of sleep is associated with higher amount of calories burned. An adequate duration and good quality of sleep constitutes to higher calories burned during the sleeping process. However sleeping more than the required range doesn't seem to burn more calories and in fact causes the opposite to occur, which is burn fewer calories.
+
+#### METs and Average Calories Burned:
+
+```SQL
+--average met per day per user, and compare with the calories burned
+Select Distinct temp1.Id, temp1.date_new, sum(temp1.METs) as sum_mets, temp2.Calories
+From minute_METs_narrow as temp1
+inner join daily_activity as temp2
+on temp1.Id = temp2.Id and temp1.date_new = temp2.date_new
+Group By temp1.Id, temp1.date_new, temp2.Calories
+Order by date_new
+OFFSET 0 ROWS FETCH FIRST 10 ROWS ONLY
+```
