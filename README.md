@@ -249,7 +249,7 @@ Calories burned per minute = (METs x 3.5 x (your body weight in Kg)) / 200
 
 ![image](https://user-images.githubusercontent.com/96917306/156231398-7ef138ae-f2d5-4d9e-badc-3144dbd50571.png)
 
-*[source](https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task)
+* source: [Wikipedia](https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task)
 
 ```SQL
 --average met per day per user, and compare with the calories burned
@@ -274,3 +274,17 @@ Key Findings:
 * Strong positive corellation between METs and average calories burned.
 
 The amount of calories burned for every user is highly dependent on their MET values they spend every day. This can be seen by the high r-squared value suggesting that the trend line has strong relation with the data points.
+
+## Conclusion
+
+After performing the collection, transformation, cleaning, organisation and analysis of the given datasets, we have enough factual evidence to suggest answers to the business-related questions that were asked.
+
+We can infer that the duration and the level of intensity of the activities performed are greatly in dependence to the amount of calories burned. METs provide a great insight on the intensity of activities performed and the amount of calories burned per minute. While most of the consumers attain adequate amounts of sleep, it is noticed that a small fraction of the users either oversleep or undersleep. Consumers are also more likely to perform low-high intensity activities in the range of 5:00 AM - 9:00PM throughout the day.
+
+In order to design new marketing strategies to better focus on unlocking new growth oppurtunities and develop the business, we have to refer to the analysis provided above and keep those facts in mind. The recommendations I would provide to help solve this business-related scenario is shown below.
+
+Top Recommendations to Marketing Strategists:
+Highlight the MET tracking feature on the smart devices as a marketing strategy and create awareness on MET values. For it allows users to track their level of intensity of activities and provide a real time insight on how much calories they burn every minute.
+Consumers seem to spend most of their time inactive and live a sedentary lifestyle. Notifying users through smart device notifications during the most popular time for performing activities which is between 5:00 AM - 9:00PM can remind people to exercise and live a more active lifestyle.
+Provide app notification for users to remind them to get sufficient sleep every day and implement new sleep measurement features or products such as tracking Rapid Eye Movement (REM) sleep.
+Consider setting daily/weekly calorie challenges and award points to users based on the top performers. Where the points can be accumulated and redeemed as a discount for their next product purchase.
