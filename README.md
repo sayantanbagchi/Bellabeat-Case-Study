@@ -249,3 +249,10 @@ Group By temp1.Id, temp1.date_new, temp2.Calories
 Order by date_new
 OFFSET 0 ROWS FETCH FIRST 10 ROWS ONLY
 ```
+
+![image](https://user-images.githubusercontent.com/96917306/156221688-ec812e40-ea5c-4f08-afa7-8881199a27c7.png)
+*there is total 934 rows, for better understanding I am attaching only first 10 rows*
+
+![image](https://github.com/sayantanbagchi/Bellabeat-Case-Study/blob/b6728ca48f518eb15cacb820f02b3abd74cf6605/Visualizations/mets_calories.png)
+
+
