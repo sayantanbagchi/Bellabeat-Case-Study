@@ -290,4 +290,4 @@ Top Recommendations to Marketing Strategists:
 * Provide app notification for users to remind them to get sufficient sleep every day and implement new sleep measurement features or products such as tracking Rapid Eye Movement (REM) sleep.
 * Consider setting daily/weekly calorie challenges and award points to users based on the top performers. Where the points can be accumulated and redeemed as a discount for their next product purchase.
 
-									### Thank You
+### 									Thank You
