@@ -142,3 +142,15 @@ FROM (SELECT id, time_new, calories, total_intensity, average_intensity, step_to
 
 ## Analyze
 Transform the data to identify patterns and draw conclusions. As determined by the Process step, I have a variety of data tables that measures different fitness parameters (steps, calories, distance, sleep, activity, etc) in both daily and hourly time frames. However, for organizational consistency as well as ease and simplicity, I will perform analysis on the data tables by whether observations are provided at a daily or hourly intervals. This is made possible because the “Id” column is a shared key that corresponds between each of the data tables.
+
+```SQL
+--Time spent on activity per day
+Select Distinct Id, SUM(SedentaryMinutes) as sedentary_mins,
+SUM(LightlyActiveMinutes) as lightly_active_mins,
+SUM(FairlyActiveMinutes) as fairly_active_mins, 
+SUM(VeryActiveMinutes) as very_active_mins
+From daily_activity
+where total_time_in_bed IS NOT NULL
+Group by Id
+```
+
