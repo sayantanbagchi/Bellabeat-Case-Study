@@ -155,3 +155,44 @@ Group by Id
 ```
 
 ![Dashboard 1 (2)](https://user-images.githubusercontent.com/96917306/156193153-24d0a864-da4b-44f1-9d4e-02b389650d3d.png)
+
+```SQL
+--Daily Average analysis
+Select AVG(TotalSteps) as avg_steps,
+AVG(TotalDistance) as avg_distance,
+AVG(Calories) as avg_calories,
+day_of_week
+From daily_activity
+Group By  day_of_week
+```
+![image](https://user-images.githubusercontent.com/96917306/156217384-e82a3211-dfe4-41bf-9e0f-5028cd991152.png)
+```SQL
+--Daily Sum Analysis - No trends/patterns found
+Select SUM(TotalSteps) as total_steps,
+SUM(TotalDistance) as total_distance,
+SUM(Calories) as total_calories,
+day_of_week
+From daily_activity
+Group By  day_of_week
+```
+![image](https://user-images.githubusercontent.com/96917306/156217758-ed709107-1330-4abb-83a7-d817050d2afc.png)
+
+### Activity duration and Calories burned relation
+```SQL
+--Activities and colories comparison
+Select Id,
+SUM(TotalSteps) as total_steps,
+SUM(VeryActiveMinutes) as total_very_active_mins,
+Sum(FairlyActiveMinutes) as total_fairly_active_mins,
+SUM(LightlyActiveMinutes) as total_lightly_active_mins,
+SUM(Calories) as total_calories
+From daily_activity
+Group By Id
+```
+![image](https://user-images.githubusercontent.com/96917306/156218718-1e41bf61-fc99-4ff4-965e-ae6e28c216fa.png)
+
+![image](https://github.com/sayantanbagchi/Bellabeat-Case-Study/blob/3d1ea386e66a4961c7a9ef5fec7b9349c5a90932/Visualizations/Fitbit%20dashboard.png)
+
+
+* Strong correlation between activity intense time and calories burned
+* From the graph above, we can see that the most desired time people are active throughout the day is between 7:00 AM - 8:00PM
