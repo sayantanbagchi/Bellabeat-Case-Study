@@ -154,3 +154,4 @@ where total_time_in_bed IS NOT NULL
 Group by Id
 ```
 
+![Dashboard 1 (2)](https://user-images.githubusercontent.com/96917306/156193153-24d0a864-da4b-44f1-9d4e-02b389650d3d.png)
